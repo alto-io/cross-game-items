@@ -1,6 +1,4 @@
-# ADC Contracts
-
-## Contracts
+# Alto Loot Challenge Contracts
 
 ### 1. AccessControl
 Used for checking if an address has access to call functions in this contract. This contract also provides fallback function and withdrawal of contract balance. This is not used as is, other contracts extends AccessControl to check if the caller has access.
