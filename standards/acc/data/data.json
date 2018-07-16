@@ -1,0 +1,374 @@
+{
+    "prodNetworkId": "4447",
+    "items": [
+        {
+            "id": 1,
+            "name": "Mage_Wand",
+            "filename": "Mage_Wand.png",
+            "verboseName": "Arcanist's Wand",
+            "imageUrl": "/POCStore-Items/Mage_Wand.png"
+        },
+        {
+            "id": 2,
+            "name": "Mage_SpellBook",
+            "filename": "Mage_SpellBook.png",
+            "verboseName": "Arcanist's Tome of Spells",
+            "imageUrl": "/POCStore-Items/Mage_SpellBook.png"
+        },
+        {
+            "id": 3,
+            "name": "Mage_Armor",
+            "filename": "Mage_Armor.png",
+            "verboseName": "Arcanist's Robes",
+            "imageUrl": "/POCStore-Items/Mage_Armor.png"
+        },
+        {
+            "id": 4,
+            "name": "Ranger_Bow",
+            "filename": "Ranger_Bow.png",
+            "verboseName": "Forestwalker's Longbow",
+            "imageUrl": "/POCStore-Items/Ranger_Bow.png"
+        },
+        {
+            "id": 5,
+            "name": "Ranger_Quiver",
+            "filename": "Ranger_Quiver.png",
+            "verboseName": "Forestwalker's Quiver",
+            "imageUrl": "/POCStore-Items/Ranger_Quiver.png"
+        },
+        {
+            "id": 6,
+            "name": "Ranger_Armor",
+            "filename": "Ranger_Armor.png",
+            "verboseName": "Forestwalker's Leather Armor",
+            "imageUrl": "/POCStore-Items/Ranger_Armor.png"
+        },
+        {
+            "id": 7,
+            "name": "BattleCleric_Mace",
+            "filename": "BattleCleric_Mace.png",
+            "verboseName": "Mace of the Light's Watch",
+            "imageUrl": "/POCStore-Items/BattleCleric_Mace.png"
+        },
+        {
+            "id": 8,
+            "name": "BattleCleric_Scroll",
+            "filename": "BattleCleric_Scroll.png",
+            "verboseName": "Scroll of the Light's Watch",
+            "imageUrl": "/POCStore-Items/BattleCleric_Scroll.png"
+        },
+        {
+            "id": 9,
+            "name": "BattleCleric_Armor",
+            "filename": "BattleCleric_Armor.png",
+            "verboseName": "Battleplate of the Light's Watch",
+            "imageUrl": "/POCStore-Items/BattleCleric_Armor.png"
+        },
+        {
+            "id": 10,
+            "name": "Fighter_Sword",
+            "filename": "Fighter_Sword.png",
+            "verboseName": "Longsword of the Onyx Pack",
+            "imageUrl": "/POCStore-Items/Fighter_Sword.png"
+        },
+        {
+            "id": 11,
+            "name": "Fighter_Shield",
+            "filename": "Fighter_Shield.png",
+            "verboseName": "Shield of the Onxy Pack",
+            "imageUrl": "/POCStore-Items/Fighter_Shield.png"
+        },
+        {
+            "id": 12,
+            "name": "Fighter_Armor",
+            "filename": "Fighter_Armor.png",
+            "verboseName": "Half Plate of the Onyx Pack",
+            "imageUrl": "/POCStore-Items/Fighter_Armor.png"
+        },
+        {
+            "id": 13,
+            "name": "Rogue_Dagger",
+            "filename": "Rogue_Dagger.png",
+            "verboseName": "Stalker's Dagger",
+            "imageUrl": "/POCStore-Items/Rogue_Dagger.png"
+        },
+        {
+            "id": 14,
+            "name": "Rogue_Crossbow",
+            "filename": "Rogue_Crossbow.png",
+            "verboseName": "Stalker's Hand Crossbow",
+            "imageUrl": "/POCStore-Items/Rogue_Crossbow.png"
+        },
+        {
+            "id": 15,
+            "name": "Rogue_Armor",
+            "filename": "Rogue_Armor.png",
+            "verboseName": "Stalker's Leather Armor",
+            "imageUrl": "/POCStore-Items/Rogue_Armor.png"
+        },
+        {
+            "id": 16,
+            "name": "Bard_Lute",
+            "filename": "Bard_Lute.png",
+            "verboseName": "Taleweaver's Lute",
+            "imageUrl": "/POCStore-Items/Bard_Lute.png"
+        },
+        {
+            "id": 17,
+            "name": "Bard_Shortsword",
+            "filename": "Bard_Shortsword.png",
+            "verboseName": "Taleweaver's Shortsword",
+            "imageUrl": "/POCStore-Items/Bard_Shortsword.png"
+        },
+        {
+            "id": 18,
+            "name": "Bard_Armor",
+            "filename": "Bard_Armor.png",
+            "verboseName": "Taleweaver's Tunic",
+            "imageUrl": "/POCStore-Items/Bard_Armor.png"
+        },
+        {
+            "id": 19,
+            "name": "AmuletOfDreams",
+            "filename": "AmuletOfDreams.png",
+            "verboseName": "Amulet of Dreams",
+            "imageUrl": "/POCStore-Items/AmuletOfDreams.png"
+        },
+        {
+            "id": 20,
+            "name": "BloodAmulet",
+            "filename": "BloodAmulet.png",
+            "verboseName": "Blood Amulet",
+            "imageUrl": "/POCStore-Items/BloodAmulet.png"
+        },
+        {
+            "id": 21,
+            "name": "Caltrops",
+            "filename": "Caltrops.png",
+            "verboseName": "Wicked Caltrops",
+            "imageUrl": "/POCStore-Items/Caltrops.png"
+        },
+        {
+            "id": 22,
+            "name": "Cards",
+            "filename": "Cards.png",
+            "verboseName": "Cards of Fate",
+            "imageUrl": "/POCStore-Items/Cards.png"
+        },
+        {
+            "id": 23,
+            "name": "CrystalApple",
+            "filename": "CrystalApple.png",
+            "verboseName": "Crystal Apple",
+            "imageUrl": "/POCStore-Items/CrystalApple.png"
+        },
+        {
+            "id": 24,
+            "name": "Dice",
+            "filename": "Dice.png",
+            "verboseName": "Jade Dice",
+            "imageUrl": "/POCStore-Items/Dice.png"
+        },
+        {
+            "id": 25,
+            "name": "Drums",
+            "filename": "Drums.png",
+            "verboseName": "Haste Drums",
+            "imageUrl": "/POCStore-Items/Drums.png"
+        },
+        {
+            "id": 26,
+            "name": "Flail",
+            "filename": "Flail.png",
+            "verboseName": "Flail of the Imperator",
+            "imageUrl": "/POCStore-Items/Flail.png"
+        },
+        {
+            "id": 27,
+            "name": "GrapplingHook",
+            "filename": "GrapplingHook.png",
+            "verboseName": "Grappling Hook of the Fox",
+            "imageUrl": "/POCStore-Items/GrapplingHook.png"
+        },
+        {
+            "id": 28,
+            "name": "HeavyBracers",
+            "filename": "HeavyBracers.png",
+            "verboseName": "Bracers of the Aegis",
+            "imageUrl": "/POCStore-Items/HeavyBracers.png"
+        },
+        {
+            "id": 29,
+            "name": "Horn",
+            "filename": "Horn.png",
+            "verboseName": "Horn of Resounding",
+            "imageUrl": "/POCStore-Items/Horn.png"
+        },
+        {
+            "id": 30,
+            "name": "Hourglass",
+            "filename": "Hourglass.png",
+            "verboseName": "Bonekeeper's Hourglass",
+            "imageUrl": "/POCStore-Items/Hourglass.png"
+        },
+        {
+            "id": 31,
+            "name": "Katar",
+            "filename": "Katar.png",
+            "verboseName": "Abhishek's Katar",
+            "imageUrl": "/POCStore-Items/Katar.png"
+        },
+        {
+            "id": 32,
+            "name": "Lamp",
+            "filename": "Lamp.png",
+            "verboseName": "Lamp of Wonder",
+            "imageUrl": "/POCStore-Items/Lamp.png"
+        },
+        {
+            "id": 33,
+            "name": "LightBracers",
+            "filename": "LightBracers.png",
+            "verboseName": "Bracers of Light",
+            "imageUrl": "/POCStore-Items/LightBracers.png"
+        },
+        {
+            "id": 34,
+            "name": "MagicCandle",
+            "filename": "MagicCandle.png",
+            "verboseName": "Candle of the Coven",
+            "imageUrl": "/POCStore-Items/MagicCandle.png"
+        },
+        {
+            "id": 35,
+            "name": "MagicDust",
+            "filename": "MagicDust.png",
+            "verboseName": "Purified Pixie Dust",
+            "imageUrl": "/POCStore-Items/MagicDust.png"
+        },
+        {
+            "id": 36,
+            "name": "Mirror",
+            "filename": "Mirror.png",
+            "verboseName": "Mirror of Abundance",
+            "imageUrl": "/POCStore-Items/Mirror.png"
+        },
+        {
+            "id": 37,
+            "name": "Ocarina",
+            "filename": "Ocarina.png",
+            "verboseName": "Ocarina of the Deep",
+            "imageUrl": "/POCStore-Items/Ocarina.png"
+        },
+        {
+            "id": 38,
+            "name": "PantherStatuette",
+            "filename": "PantherStatuette.png",
+            "verboseName": "Obsidian Panther Statue",
+            "imageUrl": "/POCStore-Items/PantherStatuette.png"
+        },
+        {
+            "id": 39,
+            "name": "Quill",
+            "filename": "Quill.png",
+            "verboseName": "Quill of Binding",
+            "imageUrl": "/POCStore-Items/Quill.png"
+        },
+        {
+            "id": 40,
+            "name": "RingOFGiants",
+            "filename": "RingOFGiants.png",
+            "verboseName": "Ring of the Mountain Giants",
+            "imageUrl": "/POCStore-Items/RingOFGiants.png"
+        },
+        {
+            "id": 41,
+            "name": "RingOfMists",
+            "filename": "RingOfMists.png",
+            "verboseName": "Ring of Mists",
+            "imageUrl": "/POCStore-Items/RingOfMists.png"
+        },
+        {
+            "id": 42,
+            "name": "Scarab",
+            "filename": "Scarab.png",
+            "verboseName": "Emerald Scarab",
+            "imageUrl": "/POCStore-Items/Scarab.png"
+        },
+        {
+            "id": 43,
+            "name": "Scimitar",
+            "filename": "Scimitar.png",
+            "verboseName": "Twilight Scimitar",
+            "imageUrl": "/POCStore-Items/Scimitar.png"
+        },
+        {
+            "id": 44,
+            "name": "SharkTooth",
+            "filename": "SharkTooth.png",
+            "verboseName": "Wyvern's Tooth",
+            "imageUrl": "/POCStore-Items/SharkTooth.png"
+        },
+        {
+            "id": 45,
+            "name": "SkeletonKey",
+            "filename": "SkeletonKey.png",
+            "verboseName": "Skeleton Key",
+            "imageUrl": "/POCStore-Items/SkeletonKey.png"
+        },
+        {
+            "id": 46,
+            "name": "Stein",
+            "filename": "Stein.png",
+            "verboseName": "Alchemical Mug",
+            "imageUrl": "/POCStore-Items/Stein.png"
+        },
+        {
+            "id": 47,
+            "name": "Sundial",
+            "filename": "Sundial.png",
+            "verboseName": "Mysterious Sundial",
+            "imageUrl": "/POCStore-Items/Sundial.png"
+        },
+        {
+            "id": 48,
+            "name": "Telescope",
+            "filename": "Telescope.png",
+            "verboseName": "Truesight Telescope",
+            "imageUrl": "/POCStore-Items/Telescope.png"
+        },
+        {
+            "id": 49,
+            "name": "WoodFlute",
+            "filename": "WoodFlute.png",
+            "verboseName": "Pathfinder Flute",
+            "imageUrl": "/POCStore-Items/WoodFlute.png"
+        }
+    ],
+    "packs": [
+        {
+            "id": 1,
+            "size": 3,
+            "sellingPrice": 10000000000000000,
+            "stock": 2000,
+            "name": "Small Chest",
+            "imageUrl": "/POCStore-Chests/sml-chest-box.png"
+        },
+        {
+            "id": 2,
+            "size": 7,
+            "sellingPrice": 20000000000000000,
+            "stock": 1000,
+            "name": "Medium Chest",
+            "imageUrl": "/POCStore-Chests/med-chest-box.png"
+        },
+        {
+            "id": 3,
+            "size": 15,
+            "sellingPrice": 40000000000000000,
+            "stock": 500,
+            "name": "Large Chest",
+            "imageUrl": "/POCStore-Chests/large-chest-box.png"
+        }
+    ]
+}
