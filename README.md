@@ -20,7 +20,7 @@ Ownership
         * [ERC 721](http://erc721.org/) - Non-fungible Token Standard
         * [ERC 998](https://github.com/ethereum/EIPs/issues/998) - Composable NFTs
         * [ERC 1155](https://github.com/ethereum/EIPs/issues/1155) - Cryptoitem Standard
-        * [Alto Challenge Loot Standard](https://loot.alto.io/)
+        * [Alto Challenge Loot Standard](standards/acc) - Implementation at [loot.alto.io](https://loot.alto.io/)
     - Exchanges
         * [Opensea](http://opensea.io/developers)
         * [Rarebits](https://docs.rarebits.io/docs)
