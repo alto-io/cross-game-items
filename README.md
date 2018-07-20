@@ -1,6 +1,8 @@
 # cross-game-items
 
-The first stop in creating cross-game items
+The first stop in creating cross-game items! 
+
+For developers making interoperable items for the [Alto Cryptogame Challenge](https://loot.alto.io/), click [here](docs/acc). You can also ask questions on the gitter channel.
 
 [![Join the chat at https://gitter.im/cross-game-items](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cross-game-items?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -20,7 +22,7 @@ Ownership
         * [ERC 721](http://erc721.org/) - Non-fungible Token Standard
         * [ERC 998](https://github.com/ethereum/EIPs/issues/998) - Composable NFTs
         * [ERC 1155](https://github.com/ethereum/EIPs/issues/1155) - Cryptoitem Standard
-        * [Alto Challenge Loot Standard](standards/acc) - Implementation at [loot.alto.io](https://loot.alto.io/)
+        * [Alto Challenge Loot Standard](smart-contracts/acc) - Implementation at [loot.alto.io](https://loot.alto.io/)
     - Exchanges
         * [Opensea](http://opensea.io/developers)
         * [Rarebits](https://docs.rarebits.io/docs)
