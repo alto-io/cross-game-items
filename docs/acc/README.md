@@ -109,16 +109,16 @@ Developers or interested parties can create the Item Definitions and set its pro
 
 [Insert diagram]
 
-Other developers can also define a `DNA` for an `Item Definition` that someone else created; that means those `DNA`s can have its own scheme of interpretation. Developers can opt to define their own `DNA` or simply use existing ones that others have created. In light of this, we highly encourage developers to share the scheme in which they designed their `DNA` to allow others the ability to interpret `DNA` for use in other games.
+Other developers can also define a `DNA` for an `ItemDef` that someone else created; that means those `DNA`s can have its own scheme of interpretation. Developers can opt to define their own `DNA` or simply use existing ones that others have created. In light of this, we highly encourage developers to share the scheme in which they designed their `DNA` to allow others the ability to interpret `DNA` for use in other games.
 
 ## Contract Reference
 
 1. `Ownership.itemDefsOf(address _wallet) public view returns (uint256[], uint256[])`
   - Fetches all item definitions created using `_wallet`
-  - Returns two (2) uint256 arrays where the first array contains the `Item Definition` IDs and the second one contains the token IDs of each item definition. Each `Item Definition` is minted to `_wallet` as an ERC721 token which is why a list of corresponding token IDs is also returned.
+  - Returns two (2) uint256 arrays where the first array contains the `ItemDef` IDs and the second one contains the token IDs of each item definition. Each `ItemDef` is minted to `_wallet` as an ERC721 token which is why a list of corresponding token IDs is also returned.
 2. `Ownership.itemsOf(address _player) public view returns (uint256[], uint256[])`
-  - Fetches all item definitions created using `_game`
-  - Returns two (2) uint256 arrays where the first array contains the `Item Definition` IDs so we know which specific item each token the `_player` owns and the second one contains the token IDs. Each element on both arrays is mapped with each other. e.g. given an index `i`: `token[i]`` is an `itemDef[i]`
+  - Fetches all tokens owned by `_player` and the corresponding `ItemDef` of each.
+  - Returns two (2) uint256 arrays where the first array contains the `ItemDef` IDs so we know which specific item each token the `_player` owns and the second one contains the token IDs. Each element on both arrays is mapped with each other. e.g. given an index `i`: `token[i]`` is an `itemDef[i]`
 3. `ItemManager.setDNA(uint256 _itemId, uint256 _dna) public canAccess whenNotPaused`
   - Set the DNA of the item definition referenced by `_itemId`
   - `canAccess` modifier restricts calls to this method to registered wallet addresses only
