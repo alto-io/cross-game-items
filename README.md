@@ -2,7 +2,7 @@
 
 The first stop in creating cross-game items! 
 
-For developers making interoperable items for the [Alto Cryptogame Challenge](https://loot.alto.io/), click [here](docs/acc). You can also ask questions on the gitter channel.
+### For developers creating a game for the Alto Cryptogame Challenge, [click here 👆🎮](docs/acc).
 
 [![Join the chat at https://gitter.im/cross-game-items](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cross-game-items?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
