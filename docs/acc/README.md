@@ -116,7 +116,7 @@ Other developers can also define a `DNA` for an `Item Definition` that someone e
 1. `Ownership.itemDefsOf(address _wallet) public view returns (uint256[], uint256[])`
   - Fetches all item definitions created using `_wallet`
   - Returns two (2) uint256 arrays where the first array contains the `Item Definition` IDs and the second one contains the token IDs of each item definition. Each `Item Definition` is minted to `_wallet` as an ERC721 token which is why a list of corresponding token IDs is also returned.
-2. `Ownership.itemOf(address _player) public view returns (uint256[], uint256[])`
+2. `Ownership.itemsOf(address _player) public view returns (uint256[], uint256[])`
   - Fetches all item definitions created using `_game`
   - Returns two (2) uint256 arrays where the first array contains the `Item Definition` IDs so we know which specific item each token the `_player` owns and the second one contains the token IDs. Each element on both arrays is mapped with each other. e.g. given an index `i`: `token[i]`` is an `itemDef[i]`
 3. `ItemManager.setDNA(uint256 _itemId, uint256 _dna) public canAccess whenNotPaused`
