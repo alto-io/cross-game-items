@@ -36,7 +36,7 @@ var OwnershipJSON = require('./path/to/Ownership.json'),
 
 #### 3. Load the item definitions
 
-To load the list of items, you simply need to call `itemDefsOf(address _wallet)` on the `Ownership` contract. In this case, value of `_wallet` should be the address provided by Alto.io. See documentation further below for more info on `itemDefsOf(address _wallet)`.
+To load the list of `Item Definitions`, you simply need to call `itemDefsOf(address _wallet)` on the `Ownership` contract. In this case, value of `_wallet` should be the address provided by Alto.io. See documentation further below for more info on `itemDefsOf(address _wallet)`.
 
 ```
 var run = async () => {
@@ -79,6 +79,25 @@ The `Ownership` contract follows the ERC721 standard. `Item Definitions` in ACC 
 
 `Ownership` also implements the ERC721 Metadata standard. To fetch the relevant metadata of the `Item Definitions`, you must first retrieve the `tokenURI()` of the definition token and get the value returned by the URI.
 
+#### 4. Fetching player tokens
+
+Now that you've loaded the `Item Definitions` and its metadata, time to load the player's tokens. You simply need to call `Ownership.itemsOf()`
+
+```
+var run = async () => {
+
+  // you can get the current user's wallet address through web3, typically via `web3.eth.accounts[0]`
+  ownInstance.itemsOf(web3.eth.accounts[0], async (err, items) => {
+    console.log(items);
+    // items[0] is the array of item definition IDs
+    // items[1] is the array of token IDs
+  });
+
+};
+
+run();
+```
+
 -----
 
 ## Technical Specifications
@@ -102,13 +121,16 @@ For ACC, we will be providing the wallet address that was used to create the ite
 
 1. `Ownership.itemDefsOf(address _game) public view returns (uint256[], uint256[])`
   - Fetches all item definitions created using `_game`
-  - Returns two (2) uint256 arrays where the first array contains the item IDs and the second one contains the token IDs of each item definition
-2. `ItemManager.setDNA(uint256 _itemId, uint256 _dna) public canAccess whenNotPaused`
+  - Returns two (2) uint256 arrays where the first array contains the `Item Definition` IDs and the second one contains the token IDs of each item definition
+2. `Ownership.itemOf(address _player) public view returns (uint256[], uint256[])`
+  - Fetches all item definitions created using `_game`
+  - Returns two (2) uint256 arrays where the first array contains the `Item Definition` IDs so we know which specific item each token the `_player` owns and the second one contains the token IDs. Each element on both arrays is mapped with each other. e.g. given an index `i`: `token[i]`` is an `itemDef[i]`
+3. `ItemManager.setDNA(uint256 _itemId, uint256 _dna) public canAccess whenNotPaused`
   - Set the DNA of the item definition referenced by `_itemId`
   - `canAccess` modifier restricts calls to this method to registered wallet addresses only
   - A DNA is set using the combination of `msg.sender` and `_itemId` which allows for multiple DNA definitions to co-exist. This allows other games to fully support an existing item defined by other developers without completely relying on the DNA designed by the original developer.
 
-3. `ItemManager.getDNA(uint256 _itemId, address _game) public view returns (uint256)`
+4. `ItemManager.getDNA(uint256 _itemId, address _game) public view returns (uint256)`
   - Fetches the DNA of an item definition, `_itemId`, defined by a developer, `_game`
   - There is no access restriction when fetching DNA. For as long as you know the wallet address that a game developer used, you may opt to read the DNA they set.
 
