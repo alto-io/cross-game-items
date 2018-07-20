@@ -1,18 +1,44 @@
 # Alto Cryptogame Challenge Docs
 
+This document is for developers looking to create cross-game interoperable items for [Alto Challenge Loot](https://loot.alto.io). 
+
 For any questions, join the chat by clicking the button below.
 
 [![Join the chat at https://gitter.im/cross-game-items](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cross-game-items?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+![header](images/showcase.png)
+
+Alto Cryptogame Challenge Loot are [ERC 721](http://erc721.org/) tokens on the Ethereum blockchain. They have smart contract functions that are explicitly design to enable a single item to be usable across several games.
 
 ## Geting Started
 
+#### 1. Registering your game
 
-The `Token`s minted through the ACC contracts are taken from `Item Definition`s created by developers. 
+To access the smart contract functions, developers must first register a wallet address which will be given access to the contracts. We encourage developers to submit a separate wallet address for each game they will make items for.
+
+Please reach out to [swen@alto.io](mailto://swen@alto.io) with your wallet address. Swen will in turn be providing the wallet address that was used to create the items.
+
+
+#### 2. Accessing the contracts
+
+[To follow]
+
+#### 3. Testing in game
+
+[To follow]
+
+-----
+
+## Technical Specifications
+
+
+`Token`s minted through the ACC contracts are taken from `Item Definition`s created by developers. 
 
 Developers or interested parties can create the Item Definitions and set its properties, in the form of `DNA`, for in-game use. The `DNA` is simply a `uint256` and it is up to the developer to decide how to interpret that value. For example, the first 128 bits could represent an item's Durability and the other 128 can be further sub-divided to define other properties that its intended game might need.
 
-Now, where does interoperability come in? Other developers can also define a `DNA` for an `Item Definition` that someone else created; that means those `DNA`s can have its own scheme of interpretation. Developers can opt to define their own `DNA` or simply use existing ones that others have created. In light of this, we highly encourage developers to share the scheme in which they designed their `DNA` to allow others the ability to interpret `DNA` for use in other games.
+[Insert diagram]
+
+Other developers can also define a `DNA` for an `Item Definition` that someone else created; that means those `DNA`s can have its own scheme of interpretation. Developers can opt to define their own `DNA` or simply use existing ones that others have created. In light of this, we highly encourage developers to share the scheme in which they designed their `DNA` to allow others the ability to interpret `DNA` for use in other games.
 
 ## Accessing the contracts
 
