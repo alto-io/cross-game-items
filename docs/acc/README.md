@@ -103,7 +103,7 @@ run();
 ## Technical Specifications
 
 
-`Token`s minted through the ACC contracts are taken from `Item Definition`s created by developers.
+`Token`s minted through the ACC contracts are taken from `Item Definition`s (`ItemDef`) created by developers wherein each `Token` has a corresponding `ItemDef`.
 
 Developers or interested parties can create the Item Definitions and set its properties, in the form of `DNA`, for in-game use. The `DNA` is simply a `uint256` and it is up to the developer to decide how to interpret that value. For example, the first 128 bits could represent an item's Durability and the other 128 can be further sub-divided to define other properties that its intended game might need.
 
@@ -111,17 +111,11 @@ Developers or interested parties can create the Item Definitions and set its pro
 
 Other developers can also define a `DNA` for an `Item Definition` that someone else created; that means those `DNA`s can have its own scheme of interpretation. Developers can opt to define their own `DNA` or simply use existing ones that others have created. In light of this, we highly encourage developers to share the scheme in which they designed their `DNA` to allow others the ability to interpret `DNA` for use in other games.
 
-## Accessing the contracts
+## Contract Reference
 
-To access the contracts, developers must provide a wallet address which will be given access to the contracts. We encourage developers to submit a separate wallet address for each game they will make items for.
-
-For ACC, we will be providing the wallet address that was used to create the items. That address will be used to filter the items that were specifically created for this challenge.
-
-## Interacting with the contracts
-
-1. `Ownership.itemDefsOf(address _game) public view returns (uint256[], uint256[])`
-  - Fetches all item definitions created using `_game`
-  - Returns two (2) uint256 arrays where the first array contains the `Item Definition` IDs and the second one contains the token IDs of each item definition
+1. `Ownership.itemDefsOf(address _wallet) public view returns (uint256[], uint256[])`
+  - Fetches all item definitions created using `_wallet`
+  - Returns two (2) uint256 arrays where the first array contains the `Item Definition` IDs and the second one contains the token IDs of each item definition. Each `Item Definition` is minted to `_wallet` as an ERC721 token which is why a list of corresponding token IDs is also returned.
 2. `Ownership.itemOf(address _player) public view returns (uint256[], uint256[])`
   - Fetches all item definitions created using `_game`
   - Returns two (2) uint256 arrays where the first array contains the `Item Definition` IDs so we know which specific item each token the `_player` owns and the second one contains the token IDs. Each element on both arrays is mapped with each other. e.g. given an index `i`: `token[i]`` is an `itemDef[i]`
