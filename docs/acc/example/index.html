@@ -1,45 +1,61 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-  <h3>web3 Provider</h3>
-  <p id="provider">Loading...</p>
+  <h2>Alto Cryptogame Challenge Example</h2>
+  <p id="mmwarning"></p>
   <h3>User Wallet Address</h3>
   <p id="useradd">Loading...</p>
-  <h3>ACC Wallet Address</h3>
-  <p id="accadd">Loading...</p>
   <h3>Item Definitions</h3>
   <p id="itemdef">0</p>
   <h3>Sim Balance</h3>
   <p id="itemsowned">0</p>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="js/web3.min.js"></script>
 
   <script>
   window.onload = function()
   {
-    if (typeof web3 !== 'undefined') {
-      web3Provider = web3.currentProvider;
-      document.getElementById('provider').textContent=web3Provider.constructor.name;
-    } else {
-      // If no injected web3 instance is detected, fallback to the TestRPC
-      web3Provider = new Web3.providers.HttpProvider('http://localhost:9545');
-      document.getElementById('provider').textContent="HttpProvider";
-    }
-    web3 = new Web3(web3Provider);
-
-    // Get user account ID
-    userWalletID = web3.eth.accounts[0];
-    document.getElementById('useradd').textContent=userWalletID;
-
+    var userWalletID;
     // Ropsten = 3, Kovan = 42, Rinkeby = 4
     var networkID = "4";
     var accWalletID = "0x1331B779A3D4Bd3f7E605e8c8A7D4Edcf692Fd6b";
 
-    document.getElementById('accadd').textContent=accWalletID;
+    if (typeof web3 !== 'undefined') {
+      web3Provider = web3.currentProvider;
+    } else {
+      document.getElementById('mmwarning').textContent="Metamask not installed. Install the metamask chrome extension.";
+      $('#mmwarning').effect("pulsate", 5000);
 
+    }
+
+    web3 = new Web3(web3Provider);
+
+    // Get user account ID
+    userWalletID = web3.eth.accounts[0];
+    if (userWalletID)
+      document.getElementById('useradd').textContent=userWalletID;
+
+    // detect metamask account changes
+    web3.currentProvider.publicConfigStore.on('update', function(data){
+      var addressText = document.getElementById('useradd');
+      var oldText = addressText.textContent;
+
+      if (data.selectedAddress) {
+        // Get user account ID
+        userWalletID = data.selectedAddress;
+        addressText.textContent=userWalletID;
+      }
+      else {
+        userWalletID = null;
+        addressText.textContent="Metamask/web3 provider is locked, please login";
+      }
+
+      if (addressText.textContent != oldText)
+        $('#useradd').effect("highlight", 1000);
+    });
 
     $.getJSON('/contracts/Ownership.json', function(data) {
       ownershipInstance = web3.eth.contract(data.abi).at(data.networks[networkID].address);
@@ -58,10 +74,11 @@
         });
 
         // get the ERC721 Metadata URI and then fetch the metadata
-        for (var i = 0; i < itemDefs[0].length; i++) {
+        // for (var i = 0; i < itemDefs[0].length; i++) {
+        for (var i = 0; i < 1; i++) {
+
           try {
 
-            /*
             // we are fetching the DNA defined by `accWallet`
             let uri = await getTokenURI(itemDefs[1][i]);
             console.log(uri);
@@ -69,7 +86,6 @@
             $.get(uri, function(data) {
               console.log(data);
             });
-            */
           } catch (e) {
             console.log(e);
           }
