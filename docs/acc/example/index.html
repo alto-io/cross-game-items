@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h3>web3 Provider</h3>
+  <p id="provider">Loading...</p>
+  <h3>User Wallet Address</h3>
+  <p id="useradd">Loading...</p>
+  <h3>ACC Wallet Address</h3>
+  <p id="accadd">Loading...</p>
+  <h3>Item Definitions</h3>
+  <p id="itemdef">0</p>
+  <h3>Sim Balance</h3>
+  <p id="itemsowned">0</p>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/web3.min.js"></script>
+
+  <script>
+  window.onload = function()
+  {
+    if (typeof web3 !== 'undefined') {
+      web3Provider = web3.currentProvider;
+      document.getElementById('provider').textContent=web3Provider.constructor.name;
+    } else {
+      // If no injected web3 instance is detected, fallback to the TestRPC
+      web3Provider = new Web3.providers.HttpProvider('http://localhost:9545');
+      document.getElementById('provider').textContent="HttpProvider";
+    }
+    web3 = new Web3(web3Provider);
+
+    // Get user account ID
+    userWalletID = web3.eth.accounts[0];
+    document.getElementById('useradd').textContent=userWalletID;
+
+    // Ropsten = 3, Kovan = 42, Rinkeby = 4
+    var networkID = "4";
+    var accWalletID = "0x1331B779A3D4Bd3f7E605e8c8A7D4Edcf692Fd6b";
+
+    document.getElementById('accadd').textContent=accWalletID;
+
+
+    $.getJSON('/contracts/Ownership.json', function(data) {
+      ownershipInstance = web3.eth.contract(data.abi).at(data.networks[networkID].address);
+
+      ownershipInstance.itemDefsOf(accWalletID, async (err, itemDefs) => {
+        console.log("items defined at " + accWalletID)
+        console.log(itemDefs);
+
+        // wrap the ERC721 method `tokenURI()` in a promise so we can wait for it
+        var getTokenURI = (tokenId) => new Promise((resolve, reject) => {
+          ownershipInstance.tokenURI(tokenId, (err, result) => {
+            if (err) return reject(err);
+
+            return resolve(result);
+          });
+        });
+
+        // get the ERC721 Metadata URI and then fetch the metadata
+        for (var i = 0; i < itemDefs[0].length; i++) {
+          try {
+
+            /*
+            // we are fetching the DNA defined by `accWallet`
+            let uri = await getTokenURI(itemDefs[1][i]);
+            console.log(uri);
+
+            $.get(uri, function(data) {
+              console.log(data);
+            });
+            */
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      });
+
+      // get items owned by the web3 (metamask) user
+      ownershipInstance.itemsOf(userWalletID, async (err, items) => {
+        console.log("items owned by " + userWalletID)
+        console.log(items);
+      });
+    });
+
+/*
+    $.getJSON('/contracts/ItemManager.json', function(data) {
+      // Get the necessary contract artifact json file and instantiate it with truffle-contract
+      itemManagerInstance = web3.eth.contract(data.abi).at(data.networks[networkID].address);
+    });
+*/
+
+
+  }
+  </script>
+
+
+</body>
+</html>
