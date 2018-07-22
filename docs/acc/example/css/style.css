@@ -1,5 +1,5 @@
 .loader {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   z-index: 1;
@@ -23,6 +23,7 @@
 .item-card {
   background: #ccc;
   color: #fff;
+
 }
 .item-card h3 {
   background: #fff;
@@ -33,6 +34,8 @@
   padding: 2%;
   position: relative;
   text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 12px;
 }
 
 .item-featured h3 {
@@ -44,6 +47,7 @@
   padding: 2%;
   position: relative;
   text-align: center;
+  border-radius: 0px;
 }
 
 .blue {
@@ -104,7 +108,6 @@
 }
 .content {
   margin: auto;
-  padding: 20px;
   width: 600px;
 }
 .content:after,

@@ -9,24 +9,35 @@
 
   <h2>Alto Cryptogame Challenge Example</h2>
   <p class= "blue" id="mmwarning"></p>
+  <div class="loader"></div>
+
   <h3>User Wallet Address</h3>
   <p id="useradd">Loading...</p>
-  <h3>Item Definitions</h3>
 
-  <section id="features" class="item-card">
-
-    <div class="loader"></div>
+  <h3 id="owncount">Items Owned</h3>
+  <section class="item-card">
 
     <div class="content">
-
-
-      <div class="item-definitions item-featured">
+      <div class="items-owned-nav center item-card">
       </div>
-      <div class="item-definitions-nav item-card">
+      <div class="items-owned item-featured">
       </div>
     </div>
 
   </section>
+
+  <h3>Item Definitions</h3>
+  <section class="item-card">
+
+    <div class="content">
+      <div class="item-definitions-nav center item-card">
+      </div>
+      <div class="item-definitions item-featured">
+      </div>
+    </div>
+
+  </section>
+
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -37,13 +48,122 @@
   <script>
   window.onload = function()
   {
-    var userWalletID;
     // Ropsten = 3, Kovan = 42, Rinkeby = 4
     var networkID = "4";
     var accWalletID = "0x1331B779A3D4Bd3f7E605e8c8A7D4Edcf692Fd6b";
+    var userWalletID;
     var itemDefinitionObjects;
+    var itemsOwnedObjects;
 
-    // initialize slick-carousel
+    // display the selected item defintion
+    var displayItemDefinition = async (index) => {
+
+        var card = $('#itemdef' + index);
+
+        // don't load anymore if item previously loaded
+        if (card.find(".itemtext").length > 0) {
+          $('.loader').hide();
+          return;
+        }
+
+        card.find("p").replaceWith('<p class="itemtext">Item Definintion ID: ' + index + '</p>');
+
+        // get token URI which contains item json metadata
+        let uri = await getTokenURI(itemDefinitionObjects[1][index - 1]); // array index starts with 0, ids start at 1
+
+        card.find("h3").append('<p class="itemtext">tokenURI: ' + uri + '</p>');
+
+        $.get(uri, function(data) {
+          Object.keys(data).forEach(function (key) {
+              card.find("h3").append('<p class="itemtext">' + key + ': ' + data[key] + '</p>');
+              if (key == 'image')
+              {
+                card.find("h3").append('<img src="' + data[key] + '"></img>');
+              }
+
+          });
+
+          $('.loader').hide();
+
+        });
+    }
+
+    // display the item owned info
+    var displayItemOwnedDetails= async (itemtext) => {
+
+        var splitString = itemtext.split(') ID:');
+        var index = splitString[0];
+        var tokenID = splitString[1];
+        var itemDefID = itemsOwnedObjects[0][index-1].c[0];
+
+        $('.item-definitions-nav').slick('slickGoTo', itemDefID-1);
+
+        var card = $('#itemowned' + index);
+
+        // don't load anymore if item previously loaded
+        if (card.find(".itemtext").length > 0) {
+          $('.loader').hide();
+          return;
+        }
+
+        card.find("p").replaceWith('<p class="itemtext">Token ID: ' + tokenID + '</p>');
+        card.find("h3").append('<p class="itemtext">Item Definition ID: ' + itemDefID + '</p>');
+
+        /*
+        var card = $('#itemdef' + index);
+
+        // don't load anymore if item previously loaded
+        if (card.find(".itemtext").length > 0) {
+          $('.loader').hide();
+          return;
+        }
+
+        card.find("p").replaceWith('<p class="itemtext">Item Definintion ID: ' + index + '</p>');
+
+        // get token URI which contains item json metadata
+        let uri = await getTokenURI(itemDefinitionObjects[1][index - 1]); // array index starts with 0, ids start at 1
+
+        card.find("h3").append('<p class="itemtext">tokenURI: ' + uri + '</p>');
+
+        $.get(uri, function(data) {
+          Object.keys(data).forEach(function (key) {
+              card.find("h3").append('<p class="itemtext">' + key + ': ' + data[key] + '</p>');
+              if (key == 'image')
+              {
+                card.find("h3").append('<img src="' + data[key] + '"></img>');
+              }
+
+          });
+
+          $('.loader').hide();
+
+        });
+        */
+    }
+
+    // ERC721 functions wrapped in promises so we can await
+    var getTokenURI = (tokenID) => new Promise((resolve, reject) => {
+      ownershipInstance.tokenURI(tokenID, (err, result) => {
+        if (err) return reject(err);
+        return resolve(result);
+      });
+    });
+
+    var getItemDefinitions = (walletID) => new Promise((resolve, reject) => {
+      ownershipInstance.itemDefsOf(walletID, async (err, result) => {
+        if (err) return reject(err);
+        return resolve(result);
+      });
+    });
+
+    var getItemsOwned = (walletID) => new Promise((resolve, reject) => {
+      ownershipInstance.itemsOf(walletID, async (err, result) => {
+        if (err) return reject(err);
+        return resolve(result);
+      });
+    });
+
+    // initialize slick-carousels
     $('.item-definitions').slick({
      slidesToShow: 1,
      slidesToScroll: 1,
@@ -57,16 +177,33 @@
      asNavFor: '.item-definitions',
      dots: false,
      centerMode: true,
-     focusOnSelect: true
+     focusOnSelect: true,
    });
+   $('.items-owned').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '.items-owned-nav'
+  });
+  $('.items-owned-nav').slick({
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    asNavFor: '.items-owned',
+    dots: false,
+    centerMode: true,
+    focusOnSelect: true,
+  });
 
 
+
+   // initialize web3
     if (typeof web3 !== 'undefined') {
       web3Provider = web3.currentProvider;
     } else {
       document.getElementById('mmwarning').textContent="Metamask not installed. Install the metamask chrome extension.";
       $('#mmwarning').effect("pulsate", 1000);
-
+      $('.loader').hide();
     }
 
     web3 = new Web3(web3Provider);
@@ -95,66 +232,6 @@
         $('#useradd').effect("highlight", 1000);
     });
 
-    // wrap the ERC721 method `tokenURI()` in a promise so we can wait for it
-    var getTokenURI = (tokenId) => new Promise((resolve, reject) => {
-      ownershipInstance.tokenURI(tokenId, (err, result) => {
-        if (err) return reject(err);
-
-        return resolve(result);
-      });
-    });
-
-    // display the selected item defintion
-    var displayItemDefinition = async (index) => {
-
-        // don't load anymore if item already loaded
-
-        if ($('#itemdef' + index).find(".itemtext").length > 0) {
-          $('.loader').hide();
-          return;
-        }
-
-        $('#itemdef' + index).find("p").replaceWith('<p class="itemtext">itemID: ' + index + '</p>');
-
-        // get token URI which contains item json metadata
-        let uri = await getTokenURI(itemDefinitionObjects[1][index]);
-
-        $('#itemdef' + index).find("h3").append('<p class="itemtext">tokenURI: ' + uri + '</p>');
-
-        $.get(uri, function(data) {
-          Object.keys(data).forEach(function (key) {
-            $('#itemdef' + index).find("h3").append('<p class="itemtext">' + key + ': ' + data[key] + '</p>');
-
-            if (key == 'image')
-            {
-              $('#itemdef' + index).find("h3").append('<img src="' + data[key] + '"></img>');
-            }
-
-          });
-
-          $('.loader').hide();
-
-        });
-    }
-
-    // retrieve tokenURI in a promise so we can await
-    var getTokenURI = (tokenID) => new Promise((resolve, reject) => {
-      ownershipInstance.tokenURI(tokenID, (err, result) => {
-        if (err) return reject(err);
-        return resolve(result);
-      });
-    });
-
-    // retrieve itemDefinitions in a promise so we can await
-    var getItemDefinitions = (walletID) => new Promise((resolve, reject) => {
-      // get the item definitions
-      ownershipInstance.itemDefsOf(walletID, async (err, result) => {
-        if (err) return reject(err);
-        return resolve(result);
-      });
-    });
-
-
 
     // start interacting with the smart contract
     $.getJSON('/contracts/Ownership.json', async function(data) {
@@ -164,26 +241,50 @@
       itemDefinitionObjects = await getItemDefinitions(accWalletID);
 
       // refresh item definition Display
-      for (var i = 0; i < itemDefinitionObjects[0].length; i++) {
+      for (var i = 1; i < itemDefinitionObjects[0].length + 1; i++) {
         $('.item-definitions').slick('slickAdd','<div id="itemdef' + i +'"><h3><p> ... </p></h3></div>');
         $('.item-definitions-nav').slick('slickAdd','<div id="itemdefnav' + i +'"><h3>' + i + '</h3></div>');
 
-        // show item info on click
-        $('#itemdefnav' + i).bind("click", function() {
-          $('.loader').show();
-          displayItemDefinition($ (this).text());
-        });
       }
 
-      // display the first item
-      displayItemDefinition(0);
+      // show item info on slide change
+      $('.item-definitions-nav').on('afterChange',
+          function(event, slick, currentSlide) {
+            $('.loader').show();
+            displayItemDefinition(currentSlide + 1);
+          }
+        );
 
 
       // get items owned by the web3 (metamask) user
-      ownershipInstance.itemsOf(userWalletID, async (err, items) => {
-        console.log("items owned by " + userWalletID)
-        console.log(items);
-      });
+      itemsOwnedObjects = await getItemsOwned(userWalletID);
+
+      document.getElementById('owncount').textContent="Items Owned: " + itemsOwnedObjects[0].length;
+
+      // refresh item definition Display
+      var firstItemText = null;
+      for (var i = 1; i < itemsOwnedObjects[0].length + 1; i++) {
+        var itemid = itemsOwnedObjects[1][i-1].c[0];
+        var itemtext = i + ') ID:' + itemid;
+        if (firstItemText == null) firstItemText = itemtext;
+        $('.items-owned').slick('slickAdd','<div id="itemowned' + i +'"><h3><p> ... </p></h3></div>');
+        $('.items-owned-nav').slick('slickAdd','<div id="itemownednav' + i +'"><h3>' + itemtext + '</h3></div>');
+      }
+
+      // show item info on slide change
+      $('.items-owned-nav').on('afterChange',
+          function(event, slick, currentSlide) {
+            var itemtext = $('#itemownednav' + (currentSlide + 1)).text();
+            $('.loader').show();
+            displayItemOwnedDetails(itemtext);
+          }
+        );
+
+
+      // display the first owned item info
+      displayItemOwnedDetails(firstItemText);
+
+
     });
 
 /*
