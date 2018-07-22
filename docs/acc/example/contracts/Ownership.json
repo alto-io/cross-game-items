@@ -19370,12 +19370,6 @@
       "address": "0x84a90e9b20214a466a5a89d4980114696772377c",
       "transactionHash": "0xf303490d015a43560fdc3fb90239c52a62bb65bcffa6d8ec409da73e4bf5d542"
     },
-    "3": {
-      "events": {},
-      "links": {},
-      "address": "0x5287538b8057a3ac4f2bc45e401161e71c9a2fc0",
-      "transactionHash": "0xf05b9108505791cf3e6f618412da17ca998467cce73c3c33ae63f2764d231837"
-    },
     "4": {
       "events": {
         "0x6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff625": {
@@ -19460,91 +19454,6 @@
       "links": {},
       "address": "0xf403ffc5bfa75f622a3a00ac9fc1480e723b259c",
       "transactionHash": "0x5e7886f5ee8e8ee6f87e21dc2edf33828316099e54c6bd5cf9ec52536391a6ca"
-    },
-    "4447": {
-      "events": {
-        "0x6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff625": {
-          "anonymous": false,
-          "inputs": [],
-          "name": "Pause",
-          "type": "event"
-        },
-        "0x7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b33": {
-          "anonymous": false,
-          "inputs": [],
-          "name": "Unpause",
-          "type": "event"
-        },
-        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "name": "_from",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "name": "_to",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "_tokenId",
-              "type": "uint256"
-            }
-          ],
-          "name": "Transfer",
-          "type": "event"
-        },
-        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "name": "_owner",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "name": "_approved",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "_tokenId",
-              "type": "uint256"
-            }
-          ],
-          "name": "Approval",
-          "type": "event"
-        },
-        "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "name": "_owner",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "name": "_operator",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "_approved",
-              "type": "bool"
-            }
-          ],
-          "name": "ApprovalForAll",
-          "type": "event"
-        }
-      },
-      "links": {},
-      "address": "0xebf3c3b116fc39b05a4b6e24acb3c7c5e604d07b",
-      "transactionHash": "0xac76a3885098bc98741a10f32a90e7f32b90042282b50927dcff16794f2c5236"
     }
   },
   "schemaVersion": "2.0.0",
