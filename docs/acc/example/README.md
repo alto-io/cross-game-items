@@ -6,7 +6,8 @@ For any questions, join the chat by clicking the button below.
 
 [![Join the chat at https://gitter.im/cross-game-items](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cross-game-items?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[Screenshot]
+![header](images/screenshot.png)
+
 
 ## Quickstart
 
@@ -16,8 +17,3 @@ To just run the project, install [Node and npm](https://nodejs.org/en/), and the
 npm install -g lite-server
 lite-server
 ```
-
-## Setup
-
-* install a server
-* 
