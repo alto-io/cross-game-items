@@ -32,6 +32,8 @@
     <div class="content">
       <div class="item-definitions-nav center item-card">
       </div>
+      <input id='input_newdna' value='1234567890'></input>
+      <button id='btn_setdna'>Set DNA</button>
       <div class="item-definitions item-featured">
       </div>
     </div>
@@ -67,6 +69,9 @@
         }
 
         card.find("p").replaceWith('<p class="itemtext">Item Definintion ID: ' + index + '</p>');
+
+        let dna = await getDNA(index,userWalletID); // array index starts with 0, ids start at 1
+        card.find("h3").append('<p class="itemtext">DNA for game ' + userWalletID + ': ' + dna.c + '</p>');
 
         // get token URI which contains item json metadata
         let uri = await getTokenURI(itemDefinitionObjects[1][index - 1]); // array index starts with 0, ids start at 1
@@ -108,37 +113,6 @@
 
         card.find("p").replaceWith('<p class="itemtext">Token ID: ' + tokenID + '</p>');
         card.find("h3").append('<p class="itemtext">Item Definition ID: ' + itemDefID + '</p>');
-
-        /*
-        var card = $('#itemdef' + index);
-
-        // don't load anymore if item previously loaded
-        if (card.find(".itemtext").length > 0) {
-          $('.loader').hide();
-          return;
-        }
-
-        card.find("p").replaceWith('<p class="itemtext">Item Definintion ID: ' + index + '</p>');
-
-        // get token URI which contains item json metadata
-        let uri = await getTokenURI(itemDefinitionObjects[1][index - 1]); // array index starts with 0, ids start at 1
-
-        card.find("h3").append('<p class="itemtext">tokenURI: ' + uri + '</p>');
-
-        $.get(uri, function(data) {
-          Object.keys(data).forEach(function (key) {
-              card.find("h3").append('<p class="itemtext">' + key + ': ' + data[key] + '</p>');
-              if (key == 'image')
-              {
-                card.find("h3").append('<img src="' + data[key] + '"></img>');
-              }
-
-          });
-
-          $('.loader').hide();
-
-        });
-        */
     }
 
     // ERC721 functions wrapped in promises so we can await
@@ -159,6 +133,22 @@
     var getItemsOwned = (walletID) => new Promise((resolve, reject) => {
       ownershipInstance.itemsOf(walletID, async (err, result) => {
         if (err) return reject(err);
+        return resolve(result);
+      });
+    });
+
+    var getDNA = (itemDefID, wallet) => new Promise((resolve, reject) => {
+      itemManagerInstance.getDNA(itemDefID, wallet, (err, result) => {
+        if (err) return reject(err);
+
+        return resolve(result);
+      });
+    });
+
+    var setDNA = (itemDefID, newDNA) => new Promise((resolve, reject) => {
+      itemManagerInstance.setDNA(itemDefID, newDNA, (err, result) => {
+        if (err) return reject(err);
+
         return resolve(result);
       });
     });
@@ -233,7 +223,7 @@
     });
 
 
-    // start interacting with the smart contract
+    // use ownership smart contract to get owned items and item definitions
     $.getJSON('/contracts/Ownership.json', async function(data) {
       ownershipInstance = web3.eth.contract(data.abi).at(data.networks[networkID].address);
 
@@ -275,7 +265,6 @@
       $('.items-owned-nav').on('afterChange',
           function(event, slick, currentSlide) {
             var itemtext = $('#itemownednav' + (currentSlide + 1)).text();
-            $('.loader').show();
             displayItemOwnedDetails(itemtext);
           }
         );
@@ -287,12 +276,19 @@
 
     });
 
-/*
+    // use the item manager smart contract to read and set item DNA
     $.getJSON('/contracts/ItemManager.json', function(data) {
       // Get the necessary contract artifact json file and instantiate it with truffle-contract
       itemManagerInstance = web3.eth.contract(data.abi).at(data.networks[networkID].address);
     });
-*/
+
+    // bind set dna button
+    $('#btn_setdna').click(function() {
+      var itemDefID = $('.item-definitions').slick('slickCurrentSlide') + 1;
+      var newDNA = $('#input_newdna').val();
+
+      setDNA(itemDefID, newDNA);
+    });
 
 
   }
