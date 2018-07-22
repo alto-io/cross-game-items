@@ -38,7 +38,7 @@ The web3 provider (like [Metamask](https://metamask.io/)) is used to interact wi
 
 #### 2. Access the contracts
 
-ACC uses two smart contracts, [Ownership](example/contracts/Ownership) and [ItemManager](example/contracts/ItemManager).
+ACC uses two smart contracts, [Ownership](example/contracts/Ownership.json) and [ItemManager](example/contracts/ItemManager.json).
 
 `Ownership` is used to get the items owned by a user and the data associated with each item (its `Item Definition`).
 
