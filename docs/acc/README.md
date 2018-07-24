@@ -14,10 +14,12 @@ Alto Cryptogame Challenge Loot are [ERC 721](http://erc721.org/) tokens on the E
 
 Run the example dApp found [here in the example directory](example). Instructions are found in the directory README.
 
+For Unity, check out the [Unity Example](example-unity).
+
 
 ## Geting Started
 
-The steps below reference example code found in the [Quickstart Example](example).
+The steps below reference example code found in the [dApp Quickstart Example](example).
 
 #### 1. Initialize your web3 Provider
 
