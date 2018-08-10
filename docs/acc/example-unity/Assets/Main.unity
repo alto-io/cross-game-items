@@ -134,7 +134,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 19404876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -256.5, z: 0}
+  m_LocalPosition: {x: 0, y: -273.45, z: 0}
   m_LocalScale: {x: 0.99999684, y: 0.99999684, z: 0.99999684}
   m_Children:
   - {fileID: 1410300997}
@@ -145,7 +145,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 660, y: 193.5}
-  m_SizeDelta: {x: 959.3862, y: 45}
+  m_SizeDelta: {x: 959.39, y: 78.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &107337977
 GameObject:
@@ -329,7 +329,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Item Definition ID (Integers Only)
 --- !u!222 &113745664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1121,13 +1121,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 537905430}
   m_TextComponent: {fileID: 799745213}
   m_Placeholder: {fileID: 1048333477}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -1226,7 +1226,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Enter text...
 --- !u!222 &576947339
@@ -1242,7 +1242,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 576947337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 384.6931, y: -0.5, z: 0}
+  m_LocalPosition: {x: 384.695, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1410300997}
@@ -1458,7 +1458,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 672055711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 384.6931, y: -0.5, z: 0}
+  m_LocalPosition: {x: 384.695, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1410300997}
@@ -1504,7 +1504,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
@@ -2152,7 +2152,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Item Definition ID (Integers Only)
 --- !u!222 &1048333478
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2344,13 +2344,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1144147883}
   m_TextComponent: {fileID: 1375058157}
   m_Placeholder: {fileID: 1461990509}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -2892,7 +2892,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1356174600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -301.5, z: 0}
+  m_LocalPosition: {x: 0, y: -335.40002, z: 0}
   m_LocalScale: {x: 0.99999684, y: 0.99999684, z: 0.99999684}
   m_Children:
   - {fileID: 2067420833}
@@ -3128,13 +3128,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1407560502}
   m_TextComponent: {fileID: 1348392019}
   m_Placeholder: {fileID: 113745663}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -3246,7 +3246,7 @@ MonoBehaviour:
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
-  m_LineType: 0
+  m_LineType: 1
   m_HideMobileInput: 0
   m_CharacterValidation: 0
   m_CharacterLimit: 0
@@ -3274,7 +3274,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1410300995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -309.6931, y: 0, z: 0}
+  m_LocalPosition: {x: -309.695, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 576947340}
@@ -3711,7 +3711,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: BigNumber
 --- !u!222 &1461990510
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4168,7 +4168,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1848378455}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -459.6931, y: 0, z: 0}
+  m_LocalPosition: {x: -459.695, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 19404877}

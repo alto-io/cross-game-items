@@ -74,9 +74,15 @@ private string itemManagerABI = " [ { \"constant\": true, \"inputs\": [], \"name
         var function = contract.GetFunction("setDNA");
 
 		EthEstimateGasUnityRequest estimateRequest = new EthEstimateGasUnityRequest(url);
-        TransactionInput estimateInput = function.CreateTransactionInput(wallet, inputSetDNAItemID.text, inputSetDNADNA.text);
+
+		// convert string to hex to work the same way as Javascript Example
+		string id = int.Parse(inputSetDNAItemID.text).ToString("x");
+		string hexString = System.Numerics.BigInteger.Parse(inputSetDNADNA.text).ToString("x");
+
+		TransactionInput estimateInput = function.CreateTransactionInput(wallet, id, hexString);
         yield return estimateRequest.SendRequest(estimateInput);
-        if (estimateRequest.Exception != null)
+
+		if (estimateRequest.Exception != null)
         {
 			Debug.Log(estimateRequest.Exception);
             yield break;
@@ -90,8 +96,8 @@ private string itemManagerABI = " [ { \"constant\": true, \"inputs\": [], \"name
 			wallet,
 			estimateRequest.Result,
 			new HexBigInteger("0x0"),
-			inputSetDNAItemID.text,
-			inputSetDNADNA.text);
+			id,
+			hexString);
 		yield return req.SignAndSendTransaction(callInput);
 
 		textSetDNAStatus.text = "waiting";
@@ -116,26 +122,63 @@ private string itemManagerABI = " [ { \"constant\": true, \"inputs\": [], \"name
 	/// Gets the DNA based on the input fields
 	private IEnumerator GetDNA()
     {
+		// convert string to hex to work the same way as Javascript Example
+		string id = int.Parse(inputGetDNAItemID.text).ToString("x");
+
 		var req = new EthCallUnityRequest(url);
         var contract = new Contract(null, itemManagerABI, itemManagerContractAddress);
         var function = contract.GetFunction("getDNA");
-        var callInput = function.CreateCallInput(inputGetDNAItemID.text, inputGetDNAAddress.text);
+		var callInput = function.CreateCallInput(id, inputGetDNAAddress.text);
         var blockParameter = Nethereum.RPC.Eth.DTOs.BlockParameter.CreateLatest();
         yield return req.SendRequest(callInput, blockParameter);
 
-		inputGetDNADNA.text = req.Result;
+		// convert from Hex to String
+		string result = HexBigIntegerConvertorExtensions.HexToBigInteger (req.Result, false).ToString();
+
+		inputGetDNADNA.text = result;
     }
 
-/// Gets the items based on the input fields
-private IEnumerator GetItems()
-	{
-	var req = new EthCallUnityRequest(url);
-			var contract = new Contract(null, ownershipABI, ownershipContractAddress);
-			var function = contract.GetFunction("itemsOf");
-			var callInput = function.CreateCallInput(inputGetDNAAddress.text);
-			var blockParameter = Nethereum.RPC.Eth.DTOs.BlockParameter.CreateLatest();
-			yield return req.SendRequest(callInput, blockParameter);
 
-	inputGetItemsResult.text = req.Result;
+	[FunctionOutput]
+	class ItemsOfResult
+	{
+		[Parameter("uint256[]", 1)]
+		public List<int> ItemTypeIDs { get; set; }
+
+		[Parameter("uint256[]", 2)]
+		public List<int> TokenIDs { get; set; }
+	}
+
+
+	/// Gets the items based on the input fields
+	private IEnumerator GetItems()
+	{
+		var req = new EthCallUnityRequest(url);
+				var contract = new Contract(null, ownershipABI, ownershipContractAddress);
+				var function = contract.GetFunction("itemsOf");
+				var callInput = function.CreateCallInput(inputGetDNAAddress.text);
+				var blockParameter = Nethereum.RPC.Eth.DTOs.BlockParameter.CreateLatest();
+				yield return req.SendRequest(callInput, blockParameter);
+
+		string resultLog = "TokenIDs:     [ ";
+
+		var result = function.DecodeDTOTypeOutput<ItemsOfResult>(req.Result);
+
+		foreach (var value in result.TokenIDs)
+		{
+			resultLog += value + " ";
+		}
+
+		resultLog += "]\nItemTypeIDs: [ ";
+
+		foreach (var value in result.ItemTypeIDs)
+		{
+			resultLog += value + " ";
+		}
+
+		resultLog += "]";
+
+		inputGetItemsResult.text = resultLog;
+
 	}
 }
