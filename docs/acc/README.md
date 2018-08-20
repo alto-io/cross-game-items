@@ -1,6 +1,6 @@
 # Alto Cryptogame Challenge (ACC) Docs
 
-This document is for developers looking to create cross-game interoperable items for [Alto Challenge Loot](https://loot.alto.io). 
+This document is for developers looking to create cross-game interoperable items for [Alto Challenge Loot](https://loot.alto.io).
 
 For any questions, join the chat by clicking the button below.
 
@@ -40,7 +40,7 @@ The web3 provider (like [Metamask](https://metamask.io/)) is used to interact wi
 
 #### 2. Access the contracts
 
-ACC uses two smart contracts, [Ownership](example/contracts/Ownership.json) and [ItemManager](example/contracts/ItemManager.json).
+ACC uses multiple smart contracts. Two notable contracts are [Ownership](example/contracts/Ownership.json) and [ItemManager](example/contracts/ItemManager.json).
 
 `Ownership` is used to get the items owned by a user and the data associated with each item (its `Item Definition`).
 
@@ -62,7 +62,7 @@ ACC uses two smart contracts, [Ownership](example/contracts/Ownership.json) and 
 
       itemDefinitionObjects = await getItemDefinitions(accWalletID);
       }
-      
+
     var setDNA = (itemDefID, newDNA) => new Promise((resolve, reject) => {
       itemManagerInstance.setDNA(itemDefID, newDNA, (err, result) => {
         if (err) return reject(err);
@@ -70,8 +70,8 @@ ACC uses two smart contracts, [Ownership](example/contracts/Ownership.json) and 
         return resolve(result);
       });
     });
-      
-      
+
+
     // use the item manager smart contract to read and set item DNA
     $.getJSON('/contracts/ItemManager.json', function(data) {
       // Get the necessary contract artifact json file and instantiate it with truffle-contract
@@ -85,7 +85,7 @@ ACC uses two smart contracts, [Ownership](example/contracts/Ownership.json) and 
 
       setDNA(itemDefID, newDNA);
     });
-      
+
 ````
 #### 3. Registering your game
 
@@ -93,14 +93,14 @@ The `ItemManager` functions `getDNA()` and `setDNA()` require a game's wallet ad
 
 Currently we require developers to send us the wallet address they'll be using to call `setDNA()`, and these wallet addresses have to be given permission first by us (the contract creator).
 
-Please reach out to [swen@alto.io](mailto://swen@alto.io) with your wallet address to be given permission. 
+Please reach out to [swen@alto.io](mailto://swen@alto.io) with your wallet address to be given permission.
 
 -----
 
 ## Further Reading
 
 
-`Token`s minted through the ACC contracts are taken from `Item Definition`s created by developers. 
+`Token`s minted through the ACC contracts are taken from `Item Definition`s created by developers.
 
 Developers can create the Item Definitions and set its properties, in the form of `DNA`, for in-game use. The `DNA` is simply a `uint256` and it is up to the developer to decide how to interpret that value. For example, the first 128 bits could represent an item's Durability and the other 128 can be further sub-divided to define other properties that its intended game might need.
 
@@ -168,3 +168,5 @@ module.exports = async (callback) => {
   });
 };
 ```
+
+Next: [How to manage items and packs?](ITEM_&_PACK_MANAGEMENT.md)
